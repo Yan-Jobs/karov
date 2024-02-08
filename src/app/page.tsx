@@ -31,18 +31,18 @@ export default function Home() {
           <div className={"flex-col justify-center items-center flex gap-8 pt-6"}>
             <div>
               <div className={"text-center"}>
-                <h1 className={"text-4xl"}>{"Perfection, à l'état pur."}</h1>
+                <h1 className={"text-4xl"}>{"Perfection, at its purest."}</h1>
               </div>
               <div className={"text-center"}>
                 <text className={"text-xl"}>
-                  {"Nos montres les plus prestigieuses, rien que pour vous."}
+                  {"Our most prestigious watches for someone prestigious like you."}
                 </text>
               </div>
             </div>
 
             <div className={"text-center w-[1/15] p-3 border-black border-2 hover:bg-black hover:text-white transition ease-in-out duration-500"}>
               <text className={"italic"}>
-                {"Plus d'informations"}
+                {"More"}
               </text>
             </div>
           </div>
