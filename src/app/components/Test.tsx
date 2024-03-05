@@ -1,48 +1,89 @@
-import React from "react";
-import {motion, useScroll, useTransform} from "framer-motion";
+"use client";
+// Photos from https://citizenofnowhe.re/lines-of-the-city
+import { useRef } from "react";
+import {
+  motion,
+  useScroll,
+  useSpring,
+  useTransform,
+  MotionValue,
+} from "framer-motion";
+import crocodile from "../assets/crocodile.jpg";
+import mondzia from "../assets/mondzia.jpg";
+import anotherone from "../assets/another-one.jpg";
+import "./test.css";
+
+function useParallax(value: MotionValue<number>, distance: number) {
+  return useTransform(value, [0, 1], [-distance, distance]);
+}
+
+function One() {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref });
+  const y = useParallax(scrollYProgress, 300);
+  return (
+    <section>
+    <div ref={ref}>
+      <img src={crocodile.src} alt="" />
+    </div>
+    <motion.h2 style={{ y }}>{`The Crocodile`}</motion.h2>
+  </section>
+  );
+}
+// function Two() {
+//   const ref = useRef(null);
+//   const { scrollYProgress } = useScroll({ target: ref });
+//   const y = useParallax(scrollYProgress, 300);
+//   return (
+//     <section>
+//       <div ref={ref}>
+//         <img src={expensive.src} alt="" />
+//       </div>
+//       <motion.h2 style={{ y }}>{`#00${id}`}</motion.h2>
+//     </section>
+//   );
+// }
+function Three() {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref });
+  const y = useParallax(scrollYProgress, 300);
+  return (
+
+    <section>
+    <div ref={ref}>
+      <img src={anotherone.src} alt="" />
+    </div>
+    <motion.h2 style={{ y }}>{`Another`}</motion.h2>
+  </section>
+  );
+}
+function Four() {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref });
+  const y = useParallax(scrollYProgress, 300);
+  return (
+    <section>
+    <div ref={ref}>
+      <img src={mondzia.src} alt="" />
+    </div>
+    <motion.h2 style={{ y }}>{`The Mondzia`}</motion.h2>
+  </section>
+  );
+}
 
 export default function Test() {
-    const {scrollY}  = useScroll();
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref });
+  const y = useParallax(scrollYProgress, 300);
+  return (
+    <>
+    <One />
 
-    const scaleRight = useTransform(scrollY, [0, 500], [2, 1]);
-    const yRight = useTransform(scrollY, [0, 500], ["25vh", "0vh"]);
-    const xRight = useTransform(scrollY, [0, 500], ["-25vw", "0vw"]);
+    <Three />
+    <Four />
 
-    const xLeft = useTransform(scrollY, [0, 500], ["-60%", "0vw"]);
+      
 
-    return (
-        <div style={{ width: "100vw", height: "300vh" }}>
-            <div
-                style={{
-                    height: "110vh",
-                    display: "flex",
-                    position: "sticky",
-                    top: "0px",
-                }}
-            >
-                <motion.div
-                    className="child"
-                    style={{
-                        height: "100%",
-                        width: "50vw",
-                        x: xLeft,
-                    }}
-                >
-                    <h2>Slide In </h2>
-                </motion.div>
-                <motion.div
-                    className="child"
-                    style={{
-                        height: "100%",
-                        width: "50vw",
-                        scale: scaleRight,
-                        y: yRight,
-                        x: xRight,
-                    }}
-                >
-                    <h2>Scroll Down to Zoom Out</h2>
-                </motion.div>
-            </div>
-        </div>
-    );
+    </>
+  );
 }
