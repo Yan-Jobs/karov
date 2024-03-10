@@ -97,10 +97,11 @@ function Dandenong() {
   )
 }
 
-export default function Filiale() {
+export const Filiale = (props: any) => {
 
   return (
       <>
+          <div ref={props.refProp}></div>
         <SeaGull />
         <Filiale2 />
         <Dandenong />

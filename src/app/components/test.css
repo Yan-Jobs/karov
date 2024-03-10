@@ -105,6 +105,16 @@ section > div {
   overflow: hidden;
 }
 
+.div {
+  width: 500px;
+  height:500px;
+  position: relative;
+  max-height: 90vh;
+  padding: 20px;
+  background: var(--white);
+  overflow: hidden;
+}
+
 .img {
   position: absolute;
   top: 0;

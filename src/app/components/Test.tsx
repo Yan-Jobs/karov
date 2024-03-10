@@ -19,7 +19,7 @@ function Mondzia() {
   const y = useParallax(scrollYProgress, 300);
   return (
     <section>
-    <div ref={ref}>
+    <div ref={ref} className={"div"}>
       <img src={mondzia.src} alt="" className={"img"}/>
     </div>
     <motion.h2 style={{ y }}>{`La Mondzia`}</motion.h2>
